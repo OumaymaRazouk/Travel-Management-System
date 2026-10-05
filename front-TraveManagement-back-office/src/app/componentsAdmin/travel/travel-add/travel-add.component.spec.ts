@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { TravelAddComponent } from './travel-add.component';
+
+describe('TravelAddComponent', () => {
+  let component: TravelAddComponent;
+  let fixture: ComponentFixture<TravelAddComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [TravelAddComponent]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(TravelAddComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

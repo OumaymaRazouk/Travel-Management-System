@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" routerLink="/dashboard-travel">Gestion de Voyage</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard-travel" routerLinkActive="active">Liste Voyages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/promotion-list" routerLinkActive="active">Liste Promotions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light ms-2" routerLink="/login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h2>Modifier Voyage ✈️</h2>
+
+  <form (ngSubmit)="updateTravel()">
+    <!-- Champ destination -->
+    <input type="text" [(ngModel)]="travel.destination" name="destination" placeholder="Destination" required class="form-control mb-2">
+
+    <!-- Champ date départ -->
+    <input type="date" [(ngModel)]="travel.dateDepart" name="dateDepart" required class="form-control mb-2">
+
+    <!-- Champ date retour -->
+    <input type="date" [(ngModel)]="travel.dateRetour" name="dateRetour" required class="form-control mb-2">
+
+    <!-- Champ prix -->
+    <input type="number" [(ngModel)]="travel.prix" name="prix" placeholder="Prix" required class="form-control mb-2">
+
+    <!-- Champ nombre de places -->
+    <input type="number" [(ngModel)]="travel.nombrePlaces" name="nombrePlaces" placeholder="Places" required class="form-control mb-2">
+
+    <!-- Champ description -->
+    <textarea [(ngModel)]="travel.description" name="description" placeholder="Description" required class="form-control mb-2" rows="4"></textarea>
+
+    <!-- Champ fichier pour image -->
+    <input type="file" (change)="onFileSelected($event)" class="form-control mb-2">
+
+    <!-- Affichage de l'image si elle est sélectionnée -->
+    <img *ngIf="travel.imageUrl" [src]="travel.imageUrl" alt="Aperçu image" style="width: 200px; height: auto;" />
+
+
+    <!-- Message d'erreur -->
+    <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Bouton de soumission -->
+    <button type="submit" class="btn btn-primary mt-3">Mettre à jour</button>
+  </form>
+</div>

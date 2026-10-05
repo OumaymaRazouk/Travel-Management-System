@@ -1,0 +1,49 @@
+# =========================
+# IntelliJ / IDE
+# =========================
+.idea/
+*.iml
+.vscode/
+
+# =========================
+# Java / Spring Boot
+# =========================
+target/
+*.class
+*.jar
+*.war
+*.log
+
+# =========================
+# Angular / Node
+# =========================
+node_modules/
+dist/
+.angular/
+.cache/
+coverage/
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Uploaded files
+# =========================
+uploads/
+
+# =========================
+# Operating System
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.temp

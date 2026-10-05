@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Anonymous+Pro');
+
+/* Fond général */
+body {
+  background-image: url('/assets/images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Anonymous Pro', monospace;
+  color: #f1f1f1;
+}
+
+/* Conteneur */
+.container {
+  padding-top: 80px;
+}
+
+/* Animation typewriter */
+.cursor {
+  position: relative;
+  display: inline-block;
+  border-right: 2px solid rgba(255, 255, 255, 0.75);
+  font-size: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+}
+
+.typewriter-animation {
+  animation:
+    typewriter 4s steps(60, end) 1s 1 normal both,
+    blinkingCursor 700ms steps(60, end) infinite normal;
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blinkingCursor {
+  0%   { border-right-color: rgba(255,255,255,0.75); }
+  100% { border-right-color: transparent; }
+}
+
+/* Texte secondaire */
+p.lead {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards;
+  animation-delay: 5s; /* Attendre la fin de typewriter */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

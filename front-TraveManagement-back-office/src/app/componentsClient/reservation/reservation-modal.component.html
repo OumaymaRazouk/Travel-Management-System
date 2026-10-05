@@ -1,0 +1,46 @@
+<!-- reservation-modal.component.html -->
+<h2 mat-dialog-title>Confirmation de réservation</h2>
+<div mat-dialog-content>
+  <form [formGroup]="reservationForm" (ngSubmit)="onConfirm()">
+    <mat-form-field appearance="outline">
+      <mat-label>Nom complet</mat-label>
+      <input matInput formControlName="name" required>
+      <mat-error *ngIf="reservationForm.get('name')?.invalid">Veuillez entrer votre nom complet</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" required>
+      <mat-error *ngIf="reservationForm.get('email')?.invalid">
+        Veuillez entrer une adresse email valide
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Téléphone</mat-label>
+      <input matInput formControlName="phone" required>
+      <mat-error *ngIf="reservationForm.get('phone')?.invalid">Veuillez entrer votre numéro de téléphone</mat-error>
+    </mat-form-field>
+
+    <div class="travel-summary" *ngIf="data?.travel">
+      <h3>Résumé du voyage</h3>
+      <p><strong>Destination:</strong> {{ data.travel.destination }}</p>
+      <p><strong>Dates:</strong>
+        {{ data.travel.dateDepart }} -
+        {{ data.travel.dateRetour }}
+      </p>
+      <p><strong>Prix:</strong> {{ data.travel.prix | currency:'EUR' }}</p>
+    </div>
+
+    <div class="button-container">
+      <button mat-button (click)="onCancel()">
+        Annuler
+      </button>
+      <button mat-raised-button color="primary" [disabled]="loading" type="submit">
+        <mat-icon *ngIf="!loading">event</mat-icon>
+        <mat-spinner *ngIf="loading" diameter="16"></mat-spinner>
+        {{ loading ? 'En cours...' : 'Valider la réservation' }}
+      </button>
+    </div>
+  </form>
+</div>

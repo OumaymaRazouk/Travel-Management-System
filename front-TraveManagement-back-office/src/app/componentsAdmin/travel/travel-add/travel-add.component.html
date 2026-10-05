@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" routerLink="/dashboard-travel">Gestion de Voyage</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard-travel" routerLinkActive="active">Liste Voyages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/promotion-list" routerLinkActive="active">Liste Promotions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light ms-2" routerLink="/login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <h2>Ajouter un Voyage ✈️</h2>
+
+  <form (ngSubmit)="saveTravel()">
+    <input type="text" [(ngModel)]="newTravel.destination" name="destination" placeholder="Destination" required class="form-control mb-2">
+    <input type="date" [(ngModel)]="newTravel.dateDepart" name="dateDepart" required class="form-control mb-2">
+    <input type="date" [(ngModel)]="newTravel.dateRetour" name="dateRetour" required class="form-control mb-2">
+    <input type="number" [(ngModel)]="newTravel.prix" name="prix" placeholder="Prix" required class="form-control mb-2">
+    <input type="number" [(ngModel)]="newTravel.nombrePlaces" name="nombrePlaces" placeholder="Places" required class="form-control mb-2">
+    <textarea [(ngModel)]="newTravel.description" name="description" placeholder="Description" required class="form-control mb-2" rows="4"></textarea>
+    
+    <!-- Sélecteur de promotion -->
+    <select [(ngModel)]="newTravel.promotion" name="promotion" class="form-control mb-2">
+      <option [ngValue]="null">Aucune promotion</option>
+      <option *ngFor="let promo of promotions" [ngValue]="promo.id">
+        {{ promo.nom }} ({{ promo.pourcentage }}%)
+      </option>
+    </select>
+
+    <input type="file" (change)="onFileSelected($event)" class="form-control mb-2">
+    <img *ngIf="imagePreviewUrl" [src]="imagePreviewUrl" alt="Prévisualisation" style="max-height: 150px;" class="mt-2">
+
+    <!-- Message d'erreur -->
+    <div *ngIf="errorMessage" class="alert alert-danger mt-2">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Enregistrer</button>
+  </form>
+</div>

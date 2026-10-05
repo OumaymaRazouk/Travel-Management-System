@@ -1,0 +1,16 @@
+/* styles.css (global) */
+/* styles.css ou styles.scss */
+@import "~bootswatch/dist/minty/bootstrap.min.css";
+@import 'animate.css';
+@import 'swiper/swiper-bundle.css';
+body {
+  background-image: url('assets/images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
+  margin: 0;
+}
+.container {
+  padding-top: 80px; /* Ajuste le padding si nécessaire */
+}

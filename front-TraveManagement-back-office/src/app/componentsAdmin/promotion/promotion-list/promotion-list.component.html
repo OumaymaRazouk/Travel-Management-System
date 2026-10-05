@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" routerLink="/dashboard-travel">Gestion de Voyage</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard-travel" routerLinkActive="active">Liste Voyages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/promotion-list" routerLinkActive="active">Liste Promotions</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-outline-light ms-2" routerLink="/login">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="text-primary">Liste des Promotions</h2>
+    <a routerLink="/promotions/add" class="btn btn-primary">Ajouter Nouvelle Promotion</a>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body p-0">
+      <table class="table table-hover mb-0">
+        <thead class="table-light">
+        <tr>
+          <th>Nom</th>
+          <th>Pourcentage (%)</th>
+          <th>Date de Fin</th>
+          <th class="text-center">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let promo of promotions">
+          <td>{{ promo.nom }}</td>
+          <td>{{ promo.pourcentage }}</td>
+          <td>{{ promo.dateFin | date:'dd/MM/yyyy' }}</td>
+          <td class="text-center">
+            <a [routerLink]="['/promotions/edit', promo.id]" class="btn btn-warning btn-sm me-2">Modifier</a>
+            <button (click)="deletePromotion(promo.id)" class="btn btn-danger btn-sm">Supprimer</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
